@@ -12,6 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ExamenEv2"
         tools:targetApi="31">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAuQaw0TkJmnvOcwTcTaUZlh8vs4KWBO0I" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">

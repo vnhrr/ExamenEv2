@@ -128,8 +128,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvBares"
-        android:layout_width="398dp"
-        android:layout_height="237dp"
+        android:layout_width="401dp"
+        android:layout_height="109dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="4dp"
@@ -138,6 +138,16 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnViewAll" />
+
+    <!-- Contenedor para info y listas -->
+    <FrameLayout
+        android:id="@+id/containerFragmentInfo_Lista"
+        android:layout_width="378dp"
+        android:layout_height="136dp"
+        android:layout_marginTop="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rvBares" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

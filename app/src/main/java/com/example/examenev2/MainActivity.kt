@@ -1,5 +1,7 @@
 package com.example.examenev2
 
+import android.app.AlertDialog
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -37,6 +39,9 @@ class MainActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.rvBares)
         btnEliminar = findViewById(R.id.btnDel)
         btnModificar = findViewById(R.id.btnModif)
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.containerFragmentInfo_Lista, FragmentMap())
+            .commit()
 
         // Inicializa el controlador de la base de datos.
         dbHandler = ManejoBBDD(this)
@@ -44,6 +49,7 @@ class MainActivity : AppCompatActivity() {
         // Configura los eventos de clic para los botones.
         btnAgregar.setOnClickListener {
             addBar()
+
         }
         btnVerTodos.setOnClickListener {
             viewBares() }
@@ -153,5 +159,18 @@ class MainActivity : AppCompatActivity() {
         etDir.text.clear()
         etWeb.text.clear()
         etVal.text.clear()
+    }
+
+    private fun guardsarUltimoBar(bar: String, sharedPreferences: SharedPreferences) {
+        val dialog = AlertDialog.Builder(this)
+        val ultimoBar = sharedPreferences.getStringSet(bar, emptySet())?.toMutableSet() ?: mutableSetOf()
+
+
+        dialog.setPositiveButton("Guardar") { _, _ ->
+            sharedPreferences.edit().putStringSet(bar, ultimoBar).apply()
+        }
+
+        dialog.setNegativeButton("Cancelar", null)
+        dialog.show()
     }
 }
